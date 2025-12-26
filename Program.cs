@@ -12,7 +12,7 @@ namespace SyncAppClient
          Console.WriteLine("Hello World!");
 
          Console.WriteLine("Тестирование HTTP сервера...\n");
-         string baseUrl = "http://localhost:8080/";
+         string baseUrl = "http://127.0.0.1:8888/";
 
          try
          {
