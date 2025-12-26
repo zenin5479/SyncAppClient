@@ -11,6 +11,42 @@ namespace SyncAppClient
       {
          Console.WriteLine("Hello World!");
 
+         Console.WriteLine("Тестирование HTTP сервера...\n");
+         string baseUrl = "http://localhost:8080/";
+
+         try
+         {
+            // Тестирование GET запроса
+            Console.WriteLine("=== ТЕСТ 1: GET запрос ===");
+            TestGetRequest(baseUrl + "?name=TestUser");
+
+            // Тестирование POST запроса
+            Console.WriteLine("\n=== ТЕСТ 2: POST запрос ===");
+            TestPostRequest(baseUrl);
+
+            // Тестирование PUT запроса
+            Console.WriteLine("\n=== ТЕСТ 3: PUT запрос ===");
+            TestPutRequest(baseUrl);
+
+            // Тестирование DELETE запроса
+            Console.WriteLine("\n=== ТЕСТ 4: DELETE запрос ===");
+            TestDeleteRequest(baseUrl + "resource/123");
+
+            // Тестирование с параметрами
+            Console.WriteLine("\n=== ТЕСТ 5: GET с разными параметрами ===");
+            TestGetWithParameters(baseUrl);
+
+            // Тестирование ошибок
+            Console.WriteLine("\n=== ТЕСТ 6: Неподдерживаемый метод ===");
+            TestUnsupportedMethod(baseUrl);
+         }
+         catch (Exception ex)
+         {
+            Console.WriteLine($"Ошибка при тестировании: {ex.Message}");
+         }
+
+         Console.WriteLine("\nНажмите любую клавишу для выхода...");
+
          Console.ReadKey();
       }
 
