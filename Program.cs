@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Net;
+using System.Text;
 
 namespace SyncAppClient
 {
@@ -9,6 +12,194 @@ namespace SyncAppClient
          Console.WriteLine("Hello World!");
 
          Console.ReadKey();
+      }
+
+      static void TestGetRequest(string url)
+      {
+         using (WebClient client = new WebClient())
+         {
+            try
+            {
+               Console.WriteLine($"Отправка GET на: {url}");
+               string response = client.DownloadString(url);
+               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Статус: УСПЕХ");
+            }
+            catch (WebException ex)
+            {
+               Console.WriteLine($"Ошибка: {ex.Message}");
+               if (ex.Response is HttpWebResponse httpResponse)
+               {
+                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
+               }
+            }
+         }
+      }
+
+      static void TestPostRequest(string url)
+      {
+         using (WebClient client = new WebClient())
+         {
+            try
+            {
+               Console.WriteLine($"Отправка POST на: {url}");
+
+               // Устанавливаем заголовки
+               client.Headers[HttpRequestHeader.ContentType] = "application/json";
+               client.Encoding = Encoding.UTF8;
+
+               // Тестовые данные
+               string jsonData = "{\"name\":\"Test\", \"value\":123}";
+               Console.WriteLine($"Отправляемые данные: {jsonData}");
+
+               // Отправляем запрос
+               string response = client.UploadString(url, "POST", jsonData);
+               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Статус: УСПЕХ");
+            }
+            catch (WebException ex)
+            {
+               Console.WriteLine($"Ошибка: {ex.Message}");
+               if (ex.Response is HttpWebResponse httpResponse)
+               {
+                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
+
+                  // Читаем тело ответа с ошибкой
+                  using (var stream = ex.Response.GetResponseStream())
+                  using (var reader = new System.IO.StreamReader(stream))
+                  {
+                     string errorResponse = reader.ReadToEnd();
+                     Console.WriteLine($"Ответ сервера: {errorResponse}");
+                  }
+               }
+            }
+         }
+      }
+
+      static void TestPutRequest(string url)
+      {
+         using (WebClient client = new WebClient())
+         {
+            try
+            {
+               Console.WriteLine($"Отправка PUT на: {url}");
+
+               client.Headers[HttpRequestHeader.ContentType] = "application/json";
+               client.Encoding = Encoding.UTF8;
+
+               string jsonData = "{\"id\":456, \"name\":\"UpdatedItem\"}";
+               Console.WriteLine($"Отправляемые данные: {jsonData}");
+
+               string response = client.UploadString(url, "PUT", jsonData);
+               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Статус: УСПЕХ");
+            }
+            catch (WebException ex)
+            {
+               Console.WriteLine($"Ошибка: {ex.Message}");
+               if (ex.Response is HttpWebResponse httpResponse)
+               {
+                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
+               }
+            }
+         }
+      }
+
+      static void TestDeleteRequest(string url)
+      {
+         using (WebClient client = new WebClient())
+         {
+            try
+            {
+               Console.WriteLine($"Отправка DELETE на: {url}");
+
+               // Для DELETE обычно не отправляем тело
+               byte[] responseBytes = client.UploadData(url, "DELETE", new byte[0]);
+               string response = Encoding.UTF8.GetString(responseBytes);
+
+               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Статус: УСПЕХ");
+            }
+            catch (WebException ex)
+            {
+               Console.WriteLine($"Ошибка: {ex.Message}");
+               if (ex.Response is HttpWebResponse httpResponse)
+               {
+                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
+                  Console.WriteLine($"Описание статуса: {httpResponse.StatusDescription}");
+               }
+            }
+         }
+      }
+
+      static void TestGetWithParameters(string baseUrl)
+      {
+         using (WebClient client = new WebClient())
+         {
+            try
+            {
+               // Тест 1: Без параметров
+               Console.WriteLine("\n1. GET без параметров:");
+               string response1 = client.DownloadString(baseUrl);
+               Console.WriteLine($"Ответ: {response1}");
+
+               // Тест 2: С параметром name
+               Console.WriteLine("\n2. GET с параметром name=Alice:");
+               string urlWithParam = $"{baseUrl}?name=Alice&age=30";
+               string response2 = client.DownloadString(urlWithParam);
+               Console.WriteLine($"Ответ: {response2}");
+
+               // Тест 3: С несколькими параметрами
+               Console.WriteLine("\n3. GET с несколькими параметрами:");
+               NameValueCollection query = new NameValueCollection();
+               query["name"] = "Bob";
+               query["city"] = "Moscow";
+               query["lang"] = "ru";
+
+               string queryString = ToQueryString(query);
+               string response3 = client.DownloadString(baseUrl + "?" + queryString);
+               Console.WriteLine($"Ответ: {response3}");
+            }
+            catch (WebException ex)
+            {
+               Console.WriteLine($"Ошибка: {ex.Message}");
+            }
+         }
+      }
+
+      static void TestUnsupportedMethod(string url)
+      {
+         using (WebClient client = new WebClient())
+         {
+            try
+            {
+               Console.WriteLine($"Отправка PATCH на: {url}");
+
+               // Пытаемся отправить неподдерживаемый метод
+               string jsonData = "{\"test\":\"data\"}";
+               client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+               // PATCH не поддерживается нашим сервером
+               string response = client.UploadString(url, "PATCH", jsonData);
+               Console.WriteLine($"Ответ: {response}");
+            }
+            catch (WebException ex)
+            {
+               Console.WriteLine($"Ожидаемая ошибка: {ex.Message}");
+               if (ex.Response is HttpWebResponse httpResponse)
+               {
+                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode} ({(int)httpResponse.StatusCode})");
+                  Console.WriteLine($"Статус: {(httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО")}");
+               }
+            }
+         }
+      }
+
+      static string ToQueryString(NameValueCollection nvc)
+      {
+         var array = Array.ConvertAll(nvc.AllKeys,
+             key => $"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(nvc[key])}");
+         return string.Join("&", array);
       }
    }
 }
