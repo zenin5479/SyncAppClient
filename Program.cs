@@ -9,7 +9,7 @@ namespace SyncAppClient
    {
       static void Main()
       {
-         Console.WriteLine("Hello World!");
+         
 
          Console.WriteLine("Тестирование HTTP сервера...\n");
          string baseUrl = "http://localhost:8080/";
