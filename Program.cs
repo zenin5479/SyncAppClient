@@ -94,13 +94,14 @@ namespace SyncAppClient
                if (ex.Response is HttpWebResponse httpResponse)
                {
                   Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
-
                   // Читаем тело ответа с ошибкой
                   using (var stream = ex.Response.GetResponseStream())
-                  using (var reader = new System.IO.StreamReader(stream))
                   {
-                     string errorResponse = reader.ReadToEnd();
-                     Console.WriteLine($"Ответ сервера: {errorResponse}");
+                     using (var reader = new System.IO.StreamReader(stream))
+                     {
+                        string errorResponse = reader.ReadToEnd();
+                        Console.WriteLine($"Ответ сервера: {errorResponse}");
+                     }
                   }
                }
             }
