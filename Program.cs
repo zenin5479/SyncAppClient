@@ -80,7 +80,6 @@ namespace SyncAppClient
                // Устанавливаем заголовки
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
                client.Encoding = Encoding.UTF8;
-
                // Тестовые данные
                string jsonData = "{\"name\":\"Test\", \"value\":123}";
                Console.WriteLine($"Отправляемые данные: {jsonData}");
