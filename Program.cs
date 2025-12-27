@@ -39,7 +39,7 @@ namespace SyncAppClient
          }
          catch (Exception ex)
          {
-            Console.WriteLine($"Ошибка при тестировании: {ex.Message}");
+            Console.WriteLine("Ошибка при тестировании: {0}", ex.Message);
          }
 
          Console.WriteLine("Нажмите любую клавишу для выхода...");
