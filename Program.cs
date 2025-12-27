@@ -115,10 +115,8 @@ namespace SyncAppClient
             try
             {
                Console.WriteLine($"Отправка PUT на: {url}");
-
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
                client.Encoding = Encoding.UTF8;
-
                string jsonData = "{\"id\":456, \"name\":\"UpdatedItem\"}";
                Console.WriteLine($"Отправляемые данные: {jsonData}");
 
