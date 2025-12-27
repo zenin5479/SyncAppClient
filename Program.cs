@@ -201,11 +201,9 @@ namespace SyncAppClient
             try
             {
                Console.WriteLine($"Отправка PATCH на: {url}");
-
                // Пытаемся отправить неподдерживаемый метод
                string jsonData = "{\"test\":\"data\"}";
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
-
                // PATCH не поддерживается нашим сервером
                string response = client.UploadString(url, "PATCH", jsonData);
                Console.WriteLine($"Ответ: {response}");
@@ -224,8 +222,7 @@ namespace SyncAppClient
 
       static string ToQueryString(NameValueCollection nvc)
       {
-         var array = Array.ConvertAll(nvc.AllKeys,
-             key => $"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(nvc[key])}");
+         string[] array = Array.ConvertAll(nvc.AllKeys, key => $"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(nvc[key])}");
          return string.Join("&", array);
       }
    }
