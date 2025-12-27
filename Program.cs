@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.IO;
 using System.Net;
 using System.Text;
 
@@ -95,9 +96,9 @@ namespace SyncAppClient
                {
                   Console.WriteLine("Код статуса: {0}", httpResponse.StatusCode);
                   // Читаем тело ответа с ошибкой
-                  using (var stream = ex.Response.GetResponseStream())
+                  using (Stream stream = ex.Response.GetResponseStream())
                   {
-                     using (var reader = new System.IO.StreamReader(stream))
+                     using (StreamReader reader = new StreamReader(stream))
                      {
                         string errorResponse = reader.ReadToEnd();
                         Console.WriteLine($"Ответ сервера: {errorResponse}");
