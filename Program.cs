@@ -167,9 +167,9 @@ namespace SyncAppClient
             try
             {
                // Тест 1: Без параметров
-               Console.WriteLine("\n1. GET без параметров:");
+               Console.WriteLine("1. GET без параметров:");
                string response1 = client.DownloadString(baseUrl);
-               Console.WriteLine($"Ответ: {response1}");
+               Console.WriteLine("Ответ: {0}", response1);
 
                // Тест 2: С параметром name
                Console.WriteLine("\n2. GET с параметром name=Alice:");
