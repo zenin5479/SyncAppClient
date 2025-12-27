@@ -172,10 +172,10 @@ namespace SyncAppClient
                Console.WriteLine("Ответ: {0}", response1);
 
                // Тест 2: С параметром name
-               Console.WriteLine("\n2. GET с параметром name=Alice:");
-               string urlWithParam = $"{baseUrl}?name=Alice&age=30";
+               Console.WriteLine("2. GET с параметром name=Alice:");
+               string urlWithParam = string.Format("{0}?name=Alice&age=30", baseUrl);
                string response2 = client.DownloadString(urlWithParam);
-               Console.WriteLine($"Ответ: {response2}");
+               Console.WriteLine("Ответ: {0}", response2);
 
                // Тест 3: С несколькими параметрами
                Console.WriteLine("\n3. GET с несколькими параметрами:");
