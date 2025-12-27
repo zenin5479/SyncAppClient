@@ -119,7 +119,6 @@ namespace SyncAppClient
                client.Encoding = Encoding.UTF8;
                string jsonData = "{\"id\":456, \"name\":\"UpdatedItem\"}";
                Console.WriteLine($"Отправляемые данные: {jsonData}");
-
                string response = client.UploadString(url, "PUT", jsonData);
                Console.WriteLine($"Ответ: {response}");
                Console.WriteLine("Статус: УСПЕХ");
