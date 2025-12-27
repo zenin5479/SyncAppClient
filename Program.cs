@@ -141,20 +141,20 @@ namespace SyncAppClient
          {
             try
             {
-               Console.WriteLine($"Отправка DELETE на: {url}");
+               Console.WriteLine("Отправка DELETE на: {0}", url);
                // Для DELETE обычно не отправляем тело
                byte[] responseBytes = client.UploadData(url, "DELETE", new byte[0]);
                string response = Encoding.UTF8.GetString(responseBytes);
-               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Ответ: {0}", response);
                Console.WriteLine("Статус: УСПЕХ");
             }
             catch (WebException ex)
             {
-               Console.WriteLine($"Ошибка: {ex.Message}");
+               Console.WriteLine("Ошибка: {0}", ex.Message);
                if (ex.Response is HttpWebResponse httpResponse)
                {
-                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
-                  Console.WriteLine($"Описание статуса: {httpResponse.StatusDescription}");
+                  Console.WriteLine("Код статуса: {0}", httpResponse.StatusCode);
+                  Console.WriteLine("Описание статуса: {0}", httpResponse.StatusDescription);
                }
             }
          }
