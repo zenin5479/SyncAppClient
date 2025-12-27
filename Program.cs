@@ -201,23 +201,21 @@ namespace SyncAppClient
          {
             try
             {
-               Console.WriteLine(string.Format("Отправка PATCH на: {0}", url));
+               Console.WriteLine("Отправка PATCH на: {0}", url);
                // Пытаемся отправить неподдерживаемый метод
                string jsonData = "{\"test\":\"data\"}";
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
                // PATCH не поддерживается нашим сервером
                string response = client.UploadString(url, "PATCH", jsonData);
-               Console.WriteLine(string.Format("Ответ: {0}", response));
+               Console.WriteLine("Ответ: {0}", response);
             }
             catch (WebException ex)
             {
-               Console.WriteLine(string.Format("Ожидаемая ошибка: {0}", ex.Message));
+               Console.WriteLine("Ожидаемая ошибка: {0}", ex.Message);
                if (ex.Response is HttpWebResponse httpResponse)
                {
-                  Console.WriteLine(string.Format("Код статуса: {0} ({1})", httpResponse.StatusCode,
-                     (int)httpResponse.StatusCode));
-                  Console.WriteLine(string.Format("Статус: {0}",
-                     httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО"));
+                  Console.WriteLine("Код статуса: {0} ({1})", httpResponse.StatusCode, (int)httpResponse.StatusCode);
+                  Console.WriteLine("Статус: {0}", httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО");
                }
             }
          }
