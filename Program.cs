@@ -83,7 +83,6 @@ namespace SyncAppClient
                // Тестовые данные
                string jsonData = "{\"name\":\"Test\", \"value\":123}";
                Console.WriteLine($"Отправляемые данные: {jsonData}");
-
                // Отправляем запрос
                string response = client.UploadString(url, "POST", jsonData);
                Console.WriteLine($"Ответ: {response}");
