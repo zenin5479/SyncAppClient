@@ -178,7 +178,7 @@ namespace SyncAppClient
                Console.WriteLine("Ответ: {0}", response2);
 
                // Тест 3: С несколькими параметрами
-               Console.WriteLine("\n3. GET с несколькими параметрами:");
+               Console.WriteLine("3. GET с несколькими параметрами:");
                NameValueCollection query = new NameValueCollection();
                query["name"] = "Bob";
                query["city"] = "Moscow";
@@ -186,11 +186,11 @@ namespace SyncAppClient
 
                string queryString = ToQueryString(query);
                string response3 = client.DownloadString(baseUrl + "?" + queryString);
-               Console.WriteLine($"Ответ: {response3}");
+               Console.WriteLine("Ответ: {0}", response3);
             }
             catch (WebException ex)
             {
-               Console.WriteLine($"Ошибка: {ex.Message}");
+               Console.WriteLine("Ошибка: {0}", ex.Message);
             }
          }
       }
