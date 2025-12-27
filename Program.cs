@@ -82,10 +82,10 @@ namespace SyncAppClient
                client.Encoding = Encoding.UTF8;
                // Тестовые данные
                string jsonData = "{\"name\":\"Test\", \"value\":123}";
-               Console.WriteLine($"Отправляемые данные: {jsonData}");
+               Console.WriteLine("Отправляемые данные: {0}", jsonData);
                // Отправляем запрос
                string response = client.UploadString(url, "POST", jsonData);
-               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Ответ: {0}", response);
                Console.WriteLine("Статус: УСПЕХ");
             }
             catch (WebException ex)
