@@ -201,21 +201,23 @@ namespace SyncAppClient
          {
             try
             {
-               Console.WriteLine($"Отправка PATCH на: {url}");
+               Console.WriteLine(string.Format("Отправка PATCH на: {0}", url));
                // Пытаемся отправить неподдерживаемый метод
                string jsonData = "{\"test\":\"data\"}";
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
                // PATCH не поддерживается нашим сервером
                string response = client.UploadString(url, "PATCH", jsonData);
-               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine(string.Format("Ответ: {0}", response));
             }
             catch (WebException ex)
             {
-               Console.WriteLine($"Ожидаемая ошибка: {ex.Message}");
+               Console.WriteLine(string.Format("Ожидаемая ошибка: {0}", ex.Message));
                if (ex.Response is HttpWebResponse httpResponse)
                {
-                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode} ({(int)httpResponse.StatusCode})");
-                  Console.WriteLine($"Статус: {(httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО")}");
+                  Console.WriteLine(string.Format("Код статуса: {0} ({1})", httpResponse.StatusCode,
+                     (int)httpResponse.StatusCode));
+                  Console.WriteLine(string.Format("Статус: {0}",
+                     httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО"));
                }
             }
          }
@@ -223,7 +225,12 @@ namespace SyncAppClient
 
       static string ToQueryString(NameValueCollection nvc)
       {
-         string[] array = Array.ConvertAll(nvc.AllKeys, key => $"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(nvc[key])}");
+         string Converter(string key)
+         {
+            return string.Format("{0}={1}", Uri.EscapeDataString(key), Uri.EscapeDataString(nvc[key]));
+         }
+
+         string[] array = Array.ConvertAll(nvc.AllKeys, Converter);
          return string.Join("&", array);
       }
    }
