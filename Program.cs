@@ -76,7 +76,7 @@ namespace SyncAppClient
          {
             try
             {
-               Console.WriteLine($"Отправка POST на: {url}");
+               Console.WriteLine("Отправка POST на: {0}", url);
 
                // Устанавливаем заголовки
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
@@ -101,7 +101,7 @@ namespace SyncAppClient
                      using (StreamReader reader = new StreamReader(stream))
                      {
                         string errorResponse = reader.ReadToEnd();
-                        Console.WriteLine($"Ответ сервера: {errorResponse}");
+                        Console.WriteLine("Ответ сервера: {0}", errorResponse);
                      }
                   }
                }
