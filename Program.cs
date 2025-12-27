@@ -55,15 +55,15 @@ namespace SyncAppClient
             {
                Console.WriteLine("Отправка GET на: {0}", url);
                string response = client.DownloadString(url);
-               Console.WriteLine($"Ответ: {response}");
+               Console.WriteLine("Ответ: {0}", response);
                Console.WriteLine("Статус: УСПЕХ");
             }
             catch (WebException ex)
             {
-               Console.WriteLine($"Ошибка: {ex.Message}");
+               Console.WriteLine("Ошибка: {0}", ex.Message);
                if (ex.Response is HttpWebResponse httpResponse)
                {
-                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
+                  Console.WriteLine("Код статуса: {0}", httpResponse.StatusCode);
                }
             }
          }
