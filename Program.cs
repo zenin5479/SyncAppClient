@@ -90,10 +90,10 @@ namespace SyncAppClient
             }
             catch (WebException ex)
             {
-               Console.WriteLine($"Ошибка: {ex.Message}");
+               Console.WriteLine("Ошибка: {0}", ex.Message);
                if (ex.Response is HttpWebResponse httpResponse)
                {
-                  Console.WriteLine($"Код статуса: {httpResponse.StatusCode}");
+                  Console.WriteLine("Код статуса: {0}", httpResponse.StatusCode);
                   // Читаем тело ответа с ошибкой
                   using (var stream = ex.Response.GetResponseStream())
                   {
