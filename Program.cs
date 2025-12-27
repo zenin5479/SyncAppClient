@@ -115,21 +115,21 @@ namespace SyncAppClient
          {
             try
             {
-               Console.WriteLine(string.Format("Отправка PUT на: {0}", url));
+               Console.WriteLine("Отправка PUT на: {0}", url);
                client.Headers[HttpRequestHeader.ContentType] = "application/json";
                client.Encoding = Encoding.UTF8;
                string jsonData = "{\"id\":456, \"name\":\"UpdatedItem\"}";
-               Console.WriteLine(string.Format("Отправляемые данные: {0}", jsonData));
+               Console.WriteLine("Отправляемые данные: {0}", jsonData);
                string response = client.UploadString(url, "PUT", jsonData);
-               Console.WriteLine(string.Format("Ответ: {0}", response));
+               Console.WriteLine("Ответ: {0}", response);
                Console.WriteLine("Статус: УСПЕХ");
             }
             catch (WebException ex)
             {
-               Console.WriteLine(string.Format("Ошибка: {0}", ex.Message));
+               Console.WriteLine("Ошибка: {0}", ex.Message);
                if (ex.Response is HttpWebResponse httpResponse)
                {
-                  Console.WriteLine(string.Format("Код статуса: {0}", httpResponse.StatusCode));
+                  Console.WriteLine("Код статуса: {0}", httpResponse.StatusCode);
                }
             }
          }
