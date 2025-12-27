@@ -53,7 +53,7 @@ namespace SyncAppClient
          {
             try
             {
-               Console.WriteLine($"Отправка GET на: {url}");
+               Console.WriteLine("Отправка GET на: {0}", url);
                string response = client.DownloadString(url);
                Console.WriteLine($"Ответ: {response}");
                Console.WriteLine("Статус: УСПЕХ");
