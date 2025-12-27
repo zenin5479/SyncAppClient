@@ -18,23 +18,23 @@ namespace SyncAppClient
             TestGetRequest(baseUrl + "?name=TestUser");
 
             // Тестирование POST запроса
-            Console.WriteLine("\n=== ТЕСТ 2: POST запрос ===");
+            Console.WriteLine("=== ТЕСТ 2: POST запрос ===");
             TestPostRequest(baseUrl);
 
             // Тестирование PUT запроса
-            Console.WriteLine("\n=== ТЕСТ 3: PUT запрос ===");
+            Console.WriteLine("=== ТЕСТ 3: PUT запрос ===");
             TestPutRequest(baseUrl);
 
             // Тестирование DELETE запроса
-            Console.WriteLine("\n=== ТЕСТ 4: DELETE запрос ===");
+            Console.WriteLine("=== ТЕСТ 4: DELETE запрос ===");
             TestDeleteRequest(baseUrl + "resource/123");
 
             // Тестирование с параметрами
-            Console.WriteLine("\n=== ТЕСТ 5: GET с разными параметрами ===");
+            Console.WriteLine("=== ТЕСТ 5: GET с разными параметрами ===");
             TestGetWithParameters(baseUrl);
 
             // Тестирование ошибок
-            Console.WriteLine("\n=== ТЕСТ 6: Неподдерживаемый метод ===");
+            Console.WriteLine("=== ТЕСТ 6: Неподдерживаемый метод ===");
             TestUnsupportedMethod(baseUrl);
          }
          catch (Exception ex)
@@ -42,7 +42,7 @@ namespace SyncAppClient
             Console.WriteLine($"Ошибка при тестировании: {ex.Message}");
          }
 
-         Console.WriteLine("\nНажмите любую клавишу для выхода...");
+         Console.WriteLine("Нажмите любую клавишу для выхода...");
 
          Console.ReadKey();
       }
