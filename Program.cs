@@ -141,11 +141,9 @@ namespace SyncAppClient
             try
             {
                Console.WriteLine($"Отправка DELETE на: {url}");
-
                // Для DELETE обычно не отправляем тело
                byte[] responseBytes = client.UploadData(url, "DELETE", new byte[0]);
                string response = Encoding.UTF8.GetString(responseBytes);
-
                Console.WriteLine($"Ответ: {response}");
                Console.WriteLine("Статус: УСПЕХ");
             }
