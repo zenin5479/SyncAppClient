@@ -100,11 +100,13 @@ namespace SyncAppClient
                   using (Stream stream = ex.Response.GetResponseStream())
                   {
                      if (stream != null)
+                     {
                         using (StreamReader reader = new StreamReader(stream))
                         {
                            string errorResponse = reader.ReadToEnd();
                            Console.WriteLine("Ответ сервера: {0}", errorResponse);
                         }
+                     }
                   }
                }
             }
