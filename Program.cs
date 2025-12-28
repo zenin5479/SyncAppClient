@@ -99,11 +99,12 @@ namespace SyncAppClient
                   // Читаем тело ответа с ошибкой
                   using (Stream stream = ex.Response.GetResponseStream())
                   {
-                     using (StreamReader reader = new StreamReader(stream))
-                     {
-                        string errorResponse = reader.ReadToEnd();
-                        Console.WriteLine("Ответ сервера: {0}", errorResponse);
-                     }
+                     if (stream != null)
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                           string errorResponse = reader.ReadToEnd();
+                           Console.WriteLine("Ответ сервера: {0}", errorResponse);
+                        }
                   }
                }
             }
