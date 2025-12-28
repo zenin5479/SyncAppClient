@@ -174,14 +174,14 @@ namespace SyncAppClient
             {
                // Тест 1: Без параметров
                Console.WriteLine("1. GET без параметров:");
-               string response1 = client.DownloadString(baseUrl);
-               Console.WriteLine("Ответ: {0}", response1);
+               string responseone = client.DownloadString(baseUrl);
+               Console.WriteLine("Ответ: {0}", responseone);
 
                // Тест 2: С параметром name
                Console.WriteLine("2. GET с параметром name=Alice:");
                string urlWithParam = string.Format("{0}?name=Alice&age=30", baseUrl);
-               string response2 = client.DownloadString(urlWithParam);
-               Console.WriteLine("Ответ: {0}", response2);
+               string responsetwo = client.DownloadString(urlWithParam);
+               Console.WriteLine("Ответ: {0}", responsetwo);
 
                // Тест 3: С несколькими параметрами
                Console.WriteLine("3. GET с несколькими параметрами:");
@@ -193,8 +193,8 @@ namespace SyncAppClient
                };
 
                string queryString = ToQueryString(query);
-               string response3 = client.DownloadString(baseUrl + "?" + queryString);
-               Console.WriteLine("Ответ: {0}", response3);
+               string responsethree = client.DownloadString(baseUrl + "?" + queryString);
+               Console.WriteLine("Ответ: {0}", responsethree);
             }
             catch (WebException ex)
             {
