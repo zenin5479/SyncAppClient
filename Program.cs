@@ -220,7 +220,8 @@ namespace SyncAppClient
             catch (WebException ex)
             {
                Console.WriteLine("Ожидаемая ошибка: {0}", ex.Message);
-               if (ex.Response is HttpWebResponse httpResponse)
+               HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+               if (httpResponse != null)
                {
                   Console.WriteLine("Код статуса: {0} ({1})", httpResponse.StatusCode, (int)httpResponse.StatusCode);
                   Console.WriteLine("Статус: {0}", httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО");
