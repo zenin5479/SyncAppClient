@@ -185,10 +185,12 @@ namespace SyncAppClient
 
                // Тест 3: С несколькими параметрами
                Console.WriteLine("3. GET с несколькими параметрами:");
-               NameValueCollection query = new NameValueCollection();
-               query["name"] = "Bob";
-               query["city"] = "Moscow";
-               query["lang"] = "ru";
+               NameValueCollection query = new NameValueCollection
+               {
+                  ["name"] = "Bob",
+                  ["city"] = "Moscow",
+                  ["lang"] = "ru"
+               };
 
                string queryString = ToQueryString(query);
                string response3 = client.DownloadString(baseUrl + "?" + queryString);
