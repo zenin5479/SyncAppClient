@@ -156,7 +156,8 @@ namespace SyncAppClient
             catch (WebException ex)
             {
                Console.WriteLine("Ошибка: {0}", ex.Message);
-               if (ex.Response is HttpWebResponse httpResponse)
+               HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+               if (httpResponse != null)
                {
                   Console.WriteLine("Код статуса: {0}", httpResponse.StatusCode);
                   Console.WriteLine("Описание статуса: {0}", httpResponse.StatusDescription);
