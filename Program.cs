@@ -11,7 +11,9 @@ namespace SyncAppClient
       static void Main()
       {
          Console.WriteLine("Тестирование HTTP сервера...");
-         string baseUrl = "http://localhost:8080/";
+          string baseUrl = "http://127.0.0.1:8888/connection/";
+         //string baseUrl = "http://127.0.0.1:8080/";
+         //string baseUrl = "http://localhost:8080/";
          try
          {
             // Тестирование GET запроса
