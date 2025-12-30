@@ -231,7 +231,7 @@ namespace SyncAppClient
                   }
                   else
                   {
-                     Console.WriteLine("Статус: {0}",  "НЕПРАВИЛЬНО");
+                     Console.WriteLine("Статус: {0}", "НЕПРАВИЛЬНО");
                   }
                }
             }
