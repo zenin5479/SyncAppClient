@@ -233,8 +233,6 @@ namespace SyncAppClient
                   {
                      Console.WriteLine("Статус: {0}",  "НЕПРАВИЛЬНО");
                   }
-                  
-                  
                }
             }
          }
