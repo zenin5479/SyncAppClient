@@ -234,7 +234,7 @@ namespace SyncAppClient
                      Console.WriteLine("Статус: {0}",  "НЕПРАВИЛЬНО");
                   }
                   
-                  Console.WriteLine("Статус: {0}", httpResponse.StatusCode == HttpStatusCode.MethodNotAllowed ? "ПРАВИЛЬНО" : "НЕПРАВИЛЬНО");
+                  
                }
             }
          }
