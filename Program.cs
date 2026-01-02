@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
 
 namespace SyncAppClient
 {
@@ -18,6 +19,8 @@ namespace SyncAppClient
             // Тестирование GET запроса
             Console.WriteLine("=== ТЕСТ 1: GET запрос ===");
             TestGetRequest(baseUrl + "?name=TestUser");
+
+            Thread.Sleep(2000);
 
             // Тестирование POST запроса
             Console.WriteLine("=== ТЕСТ 2: POST запрос ===");
