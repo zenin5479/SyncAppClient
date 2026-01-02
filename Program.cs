@@ -16,36 +16,32 @@ namespace SyncAppClient
          //string baseUrl = "http://127.0.0.1:8888/connection/";
          try
          {
+            Thread.Sleep(5000);
             // Тестирование GET запроса
             Console.WriteLine("=== ТЕСТ 1: GET запрос ===");
             TestGetRequest(baseUrl + "?name=TestUser");
 
-            Thread.Sleep(3000);
-
+            Thread.Sleep(5000);
             // Тестирование POST запроса
             Console.WriteLine("=== ТЕСТ 2: POST запрос ===");
             TestPostRequest(baseUrl);
 
-            Thread.Sleep(3000);
-
+            Thread.Sleep(5000);
             // Тестирование PUT запроса
             Console.WriteLine("=== ТЕСТ 3: PUT запрос ===");
             TestPutRequest(baseUrl);
 
-            Thread.Sleep(3000);
-
+            Thread.Sleep(5000);
             // Тестирование DELETE запроса
             Console.WriteLine("=== ТЕСТ 4: DELETE запрос ===");
             TestDeleteRequest(baseUrl + "resource/123");
 
-            Thread.Sleep(3000);
-
+            Thread.Sleep(5000);
             // Тестирование с параметрами
             Console.WriteLine("=== ТЕСТ 5: GET с разными параметрами ===");
             TestGetWithParameters(baseUrl);
 
-            Thread.Sleep(3000);
-
+            Thread.Sleep(5000);
             // Тестирование ошибок
             Console.WriteLine("=== ТЕСТ 6: Неподдерживаемый метод ===");
             TestUnsupportedMethod(baseUrl);
