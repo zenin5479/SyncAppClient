@@ -35,7 +35,7 @@ namespace SyncAppClient
             Console.WriteLine("=== ТЕСТ 4: DELETE запрос ===");
             TestDeleteRequest(baseUrl + "resource/123");
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             // Тестирование с параметрами
             Console.WriteLine("=== ТЕСТ 5: GET с разными параметрами ===");
             TestGetWithParameters(baseUrl);
