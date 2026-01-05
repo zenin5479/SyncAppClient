@@ -30,7 +30,7 @@ namespace SyncAppClient
             Console.WriteLine("=== ТЕСТ 3: PUT запрос ===");
             TestPutRequest(baseUrl);
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             // Тестирование DELETE запроса
             Console.WriteLine("=== ТЕСТ 4: DELETE запрос ===");
             TestDeleteRequest(baseUrl + "resource/123");
