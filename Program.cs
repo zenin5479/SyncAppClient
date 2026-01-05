@@ -40,7 +40,7 @@ namespace SyncAppClient
             Console.WriteLine("=== ТЕСТ 5: GET с разными параметрами ===");
             TestGetWithParameters(baseUrl);
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             // Тестирование ошибок
             Console.WriteLine("=== ТЕСТ 6: Неподдерживаемый метод ===");
             TestUnsupportedMethod(baseUrl);
