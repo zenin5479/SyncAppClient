@@ -20,7 +20,7 @@ namespace SyncAppClient
             Console.WriteLine("=== ТЕСТ 1: GET запрос ===");
             TestGetRequest(baseUrl + "?name=TestUser");
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             // Тестирование POST запроса
             Console.WriteLine("=== ТЕСТ 2: POST запрос ===");
             TestPostRequest(baseUrl);
