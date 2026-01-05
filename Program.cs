@@ -15,7 +15,7 @@ namespace SyncAppClient
          string baseUrl = "http://127.0.0.1:8080/";
          try
          {
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             // Тестирование GET запроса
             Console.WriteLine("=== ТЕСТ 1: GET запрос ===");
             TestGetRequest(baseUrl + "?name=TestUser");
