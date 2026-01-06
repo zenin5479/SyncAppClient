@@ -12,7 +12,7 @@ namespace SyncAppClient
       static void Main()
       {
          Console.WriteLine("Тестирование HTTP сервера...");
-         string baseUrl = "http://127.0.0.1:8080/";
+         string baseUrl = "http://127.0.0.1:8080";
          try
          {
             Thread.Sleep(3000);
@@ -49,8 +49,6 @@ namespace SyncAppClient
          {
             Console.WriteLine("Ошибка при тестировании: {0}", ex.Message);
          }
-
-         Console.WriteLine("Нажмите любую клавишу для выхода...");
 
          Console.ReadKey();
       }
