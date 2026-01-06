@@ -44,14 +44,13 @@ namespace SyncAppClient
             // Тестирование ошибок
             Console.WriteLine("=== ТЕСТ 6: Неподдерживаемый метод ===");
             TestUnsupportedMethod(baseUrl);
-
-            Console.ReadKey();
          }
          catch (Exception ex)
          {
             Console.WriteLine("Ошибка при тестировании: {0}", ex.Message);
-            Console.ReadKey();
          }
+
+         Console.ReadKey();
       }
 
       static void TestGetRequest(string url)
